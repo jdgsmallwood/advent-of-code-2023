@@ -13,6 +13,18 @@ fn main() {
     println!("The final sum is {}.", final_sum);
 }
 
+fn concat_first_and_last_numeric_character(input_string: &str) -> i32 {
+    let first_numeric_character_is_empty_check = get_first_numeric_character(input_string);
+    if first_numeric_character_is_empty_check.is_empty() {
+        return 0;
+    }
+
+    let first_numeric_character = first_numeric_character_is_empty_check;
+    let last_numeric_character = get_last_numeric_character(input_string);
+    let concat_characters = format!("{}{}", first_numeric_character, last_numeric_character);
+    concat_characters.parse::<i32>().unwrap()
+}
+
 fn get_first_numeric_character(input_string: &str) -> String {
     for character in input_string.chars() {
         if character.is_numeric() {
@@ -30,18 +42,6 @@ fn get_last_numeric_character(input_string: &str) -> String {
     let reversed_string = reverse(input_string);
 
     get_first_numeric_character(&reversed_string)
-}
-
-fn concat_first_and_last_numeric_character(input_string: &str) -> i32 {
-    let first_numeric_character_is_empty_check = get_first_numeric_character(input_string);
-    if first_numeric_character_is_empty_check.is_empty() {
-        return 0;
-    }
-
-    let first_numeric_character = first_numeric_character_is_empty_check;
-    let last_numeric_character = get_last_numeric_character(input_string);
-    let concat_characters = format!("{}{}", first_numeric_character, last_numeric_character);
-    concat_characters.parse::<i32>().unwrap()
 }
 
 #[cfg(test)]

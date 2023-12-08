@@ -15,6 +15,18 @@ fn main() {
     println!("The final sum is {}.", final_sum);
 }
 
+fn concat_first_and_last_numeric_character(input_string: &str) -> i32 {
+    let first_numeric_character_is_empty_check = get_first_numeric_character(input_string);
+    if first_numeric_character_is_empty_check.is_empty() {
+        return 0;
+    }
+
+    let first_numeric_character = first_numeric_character_is_empty_check;
+    let last_numeric_character = get_last_numeric_character(input_string);
+    let concat_characters = format!("{}{}", first_numeric_character, last_numeric_character);
+    concat_characters.parse::<i32>().unwrap()
+}
+
 fn get_first_numeric_character(input_string: &str) -> String {
     let number_map: HashMap<&str, &str> = [
         ("one", "1"),
@@ -60,17 +72,20 @@ fn get_first_numeric_character(input_string: &str) -> String {
 }
 
 fn get_last_numeric_character(input_string: &str) -> String {
-    let mut number_map = HashMap::new();
-
-    number_map.insert("one", "1");
-    number_map.insert("two", "2");
-    number_map.insert("three", "3");
-    number_map.insert("four", "4");
-    number_map.insert("five", "5");
-    number_map.insert("six", "6");
-    number_map.insert("seven", "7");
-    number_map.insert("eight", "8");
-    number_map.insert("nine", "9");
+    let number_map: HashMap<&str, &str> = [
+        ("one", "1"),
+        ("two", "2"),
+        ("three", "3"),
+        ("four", "4"),
+        ("five", "5"),
+        ("six", "6"),
+        ("seven", "7"),
+        ("eight", "8"),
+        ("nine", "9"),
+    ]
+    .iter()
+    .cloned()
+    .collect();
 
     let mut maximum_index: i32 = -1;
     let mut maximum_value = "";
@@ -98,18 +113,6 @@ fn get_last_numeric_character(input_string: &str) -> String {
         }
     }
     maximum_value.to_string()
-}
-
-fn concat_first_and_last_numeric_character(input_string: &str) -> i32 {
-    let first_numeric_character_is_empty_check = get_first_numeric_character(input_string);
-    if first_numeric_character_is_empty_check.is_empty() {
-        return 0;
-    }
-
-    let first_numeric_character = first_numeric_character_is_empty_check;
-    let last_numeric_character = get_last_numeric_character(input_string);
-    let concat_characters = format!("{}{}", first_numeric_character, last_numeric_character);
-    concat_characters.parse::<i32>().unwrap()
 }
 
 #[cfg(test)]
