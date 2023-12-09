@@ -30,3 +30,10 @@ Solved 2023/12/09
 This was a good one to get used to string manipulations like splitting in Rust. I skipped splitting out one function and unit testing it and there was a small error that I didn't find that was causing me to get the wrong answer multiple times. While I am learning it is a good idea to break everything out and check I am getting the output I desire.
 
 Solved 2023/12/09
+
+### Part 2
+This was pretty easy - the problem just needed the maximum number of each type of cube in the game. Some rearrangement of the logic and a couple of new functions solved it.
+
+I also learned a bunch about how to write this more idiomatically by using more functional-style calls, including use of fold.
+
+Solved 2023/12/10
