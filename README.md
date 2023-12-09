@@ -23,3 +23,10 @@ I also learned about match statements when trying to refine my solution.
 This still isn't exactly as I'd like - in python I would have taken out the number_map as a global constant variable, but that led to errors I could not resolve. 
 
 Solved 2023/12/09
+
+## Problem 2
+
+### Part 1
+This was a good one to get used to string manipulations like splitting in Rust. I skipped splitting out one function and unit testing it and there was a small error that I didn't find that was causing me to get the wrong answer multiple times. While I am learning it is a good idea to break everything out and check I am getting the output I desire.
+
+Solved 2023/12/09
