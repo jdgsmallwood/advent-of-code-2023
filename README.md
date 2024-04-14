@@ -37,3 +37,11 @@ This was pretty easy - the problem just needed the maximum number of each type o
 I also learned a bunch about how to write this more idiomatically by using more functional-style calls, including use of fold.
 
 Solved 2023/12/10
+
+## Problem 3
+
+### Part 1
+It was a bit challenging to get back into it after a break but I picked it back up again pretty quickly. 
+The problem itself was fairly simple. Rust-wise I was able to use some of the structures I'd picked up from the previous problems and my program had a good sense of structure.
+
+Solved 2024/04/14
