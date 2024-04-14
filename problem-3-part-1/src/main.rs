@@ -16,15 +16,15 @@ fn main() {
 
     for (line_num, numbers) in number_locations.iter().enumerate() {
         for (number_start, number) in numbers.iter() {
-            if symbol_immediately_precedes_number(number_start, symbol_locations.clone(), line_num)
+            if symbol_immediately_precedes_number(number_start, &symbol_locations, line_num)
                 || symbol_immediately_succeedes_number(
                     number_start,
-                    symbol_locations.clone(),
+                    &symbol_locations,
                     line_num,
                     number,
                 )
-                || symbol_above_number(number_start, symbol_locations.clone(), line_num, number)
-                || symbol_below_number(number_start, symbol_locations.clone(), line_num, number)
+                || symbol_above_number(number_start, &symbol_locations, line_num, number)
+                || symbol_below_number(number_start, &symbol_locations, line_num, number)
             {
                 sum += number;
                 continue;
@@ -63,24 +63,24 @@ fn get_number_locations(input_string: &str) -> Vec<(usize, i32)> {
 
 fn symbol_immediately_precedes_number(
     number_start: &usize,
-    symbol_locations: Vec<Vec<usize>>,
+    symbol_locations: &[Vec<usize>],
     line_num: usize,
 ) -> bool {
-    *number_start > 0 && symbol_locations[line_num].contains(&(number_start - 1))
+    *number_start > 0 && ((*symbol_locations)[line_num]).contains(&(number_start - 1))
 }
 
 fn symbol_immediately_succeedes_number(
     number_start: &usize,
-    symbol_locations: Vec<Vec<usize>>,
+    symbol_locations: &[Vec<usize>],
     line_num: usize,
     number: &i32,
 ) -> bool {
-    symbol_locations[line_num].contains(&(number_start + number.to_string().len()))
+    ((*symbol_locations)[line_num]).contains(&(number_start + number.to_string().len()))
 }
 
 fn symbol_above_number(
     number_start: &usize,
-    symbol_locations: Vec<Vec<usize>>,
+    symbol_locations: &[Vec<usize>],
     line_num: usize,
     number: &i32,
 ) -> bool {
@@ -89,18 +89,18 @@ fn symbol_above_number(
     // it is zero this will cause a panic.
     line_num > 0
         && ((number_start.saturating_sub(1))..=(number_start + number.to_string().len()))
-            .any(|i| symbol_locations[line_num - 1].contains(&i))
+            .any(|i| ((*symbol_locations)[line_num - 1]).contains(&i))
 }
 
 fn symbol_below_number(
     number_start: &usize,
-    symbol_locations: Vec<Vec<usize>>,
+    symbol_locations: &[Vec<usize>],
     line_num: usize,
     number: &i32,
 ) -> bool {
     line_num < symbol_locations.len()
         && ((number_start.saturating_sub(1))..=(number_start + number.to_string().len()))
-            .any(|i| symbol_locations[line_num + 1].contains(&i))
+            .any(|i| ((*symbol_locations)[line_num + 1]).contains(&i))
 }
 
 #[cfg(test)]
